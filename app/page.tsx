@@ -1006,7 +1006,7 @@ export default function Home() {
                       size="sm"
                       className="w-full border-green-200 hover:border-green-400 hover:bg-green-50"
                     >
-                      <Link href="#" target="_blank">
+                      <Link href="https://dssdglobal.org/" target="_blank">
                         <ExternalLink className="mr-2 h-4 w-4 text-green-500" />
                         Visit DSSD Website
                       </Link>
@@ -1355,7 +1355,7 @@ export default function Home() {
           </p>
           <div className="flex items-center gap-4">
             {[
-              { icon: <Linkedin className="h-4 w-4" />, href: "#", label: "LinkedIn" },
+              { icon: <Linkedin className="h-4 w-4" />, href: "https://www.linkedin.com/in/jagannathn1/", label: "LinkedIn" },
               { icon: <Github className="h-4 w-4" />, href: "https://github.com/JAGAN666", label: "GitHub" },
               { icon: <Mail className="h-4 w-4" />, href: "mailto:jagannathn@gwmail.gwu.edu", label: "Email" },
             ].map((item, index) => (
