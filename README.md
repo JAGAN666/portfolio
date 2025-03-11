@@ -15,3 +15,6 @@ Welcome to my professional portfolio on GitHub! This repository contains the sou
 - **Projects:** Showcase of selected projects that highlight my capabilities in handling complex data analytics and insights.
 - **Contact:** Direct contact information and form for potential collaborators and recruiters.
 
+
+
+
