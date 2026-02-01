@@ -109,5 +109,39 @@ if (heroName && heroMainTitle) {
     heroMainTitle.style.transform = 'scale(0.9)';
 }
 
-// 8. Console Greeting
+// 8. Contact Form Handling (Netlify AJAX)
+const contactForm = document.querySelector('.contact-form');
+const formMessage = document.getElementById('form-message');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(contactForm);
+
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString(),
+        })
+            .then(() => {
+                formMessage.textContent = "✓ Message sent successfully!";
+                formMessage.className = "success";
+                formMessage.style.display = "block";
+                contactForm.reset();
+
+                // Hide after 5 seconds
+                setTimeout(() => {
+                    formMessage.style.display = "none";
+                }, 5000);
+            })
+            .catch((error) => {
+                formMessage.textContent = "⚠ Failed to send message. Please try again.";
+                formMessage.className = "error";
+                formMessage.style.display = "block";
+            });
+    });
+}
+
+// 9. Console Greeting
 console.log('%c Designed by Jagannath ', 'background: #000; color: #fff; padding: 10px; border-radius: 5px;');
