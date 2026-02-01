@@ -1,5 +1,5 @@
 [build]
-  command = ""
+  command = "echo 'Building static site...'"
   publish = "."
 
 [build.environment]
