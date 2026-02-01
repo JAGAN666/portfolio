@@ -118,6 +118,18 @@ if (contactForm) {
         e.preventDefault();
 
         const formData = new FormData(contactForm);
+        // Requirement for Netlify AJAX: form-name must be in the payload
+        formData.append('form-name', 'contact');
+
+        // Check if we are running locally (file:// or localhost)
+        const isLocal = window.location.protocol === 'file:' || window.location.hostname === 'localhost';
+
+        if (isLocal) {
+            console.log("Local development detected. Simulating successful form submission.");
+            showFormFeedback("✓ (Simulation) Message sent! Netlify forms work after deployment.", "success");
+            contactForm.reset();
+            return;
+        }
 
         fetch("/", {
             method: "POST",
@@ -125,22 +137,28 @@ if (contactForm) {
             body: new URLSearchParams(formData).toString(),
         })
             .then(() => {
-                formMessage.textContent = "✓ Message sent successfully!";
-                formMessage.className = "success";
-                formMessage.style.display = "block";
+                showFormFeedback("✓ Message sent successfully!", "success");
                 contactForm.reset();
-
-                // Hide after 5 seconds
-                setTimeout(() => {
-                    formMessage.style.display = "none";
-                }, 5000);
             })
             .catch((error) => {
-                formMessage.textContent = "⚠ Failed to send message. Please try again.";
-                formMessage.className = "error";
-                formMessage.style.display = "block";
+                console.error('Form Submission Error:', error);
+                showFormFeedback("⚠ Failed to send message. Please try again.", "error");
             });
     });
+}
+
+function showFormFeedback(text, type) {
+    formMessage.textContent = text;
+    formMessage.className = type;
+    formMessage.style.display = "block";
+
+    // Smooth scroll to message if needed
+    formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    // Hide after 5 seconds
+    setTimeout(() => {
+        formMessage.style.display = "none";
+    }, 5000);
 }
 
 // 9. Console Greeting
