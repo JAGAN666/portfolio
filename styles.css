@@ -230,8 +230,8 @@ img {
     -webkit-text-fill-color: transparent;
     margin-bottom: var(--space-md);
     opacity: 0;
-    animation: fadeUp 1s var(--ease-out-expo) 0.8s forwards;
-    /* Cruel delay */
+    animation: fadeUp 0.8s var(--ease-out-expo) 0.4s forwards;
+    /* Snappier delay */
     will-change: transform, opacity;
 }
 
@@ -243,7 +243,7 @@ img {
     margin: 0 auto var(--space-xl);
     font-weight: 500;
     opacity: 0;
-    animation: fadeUp 1s var(--ease-out-expo) 1.0s forwards;
+    animation: fadeUp 0.8s var(--ease-out-expo) 0.5s forwards;
     will-change: transform, opacity;
 }
 
@@ -251,7 +251,7 @@ img {
     display: flex;
     gap: var(--space-md);
     opacity: 0;
-    animation: fadeUp 1s var(--ease-out-expo) 1.2s forwards;
+    animation: fadeUp 0.8s var(--ease-out-expo) 0.6s forwards;
     margin-bottom: var(--space-xl);
     will-change: transform, opacity;
 }
@@ -674,6 +674,18 @@ textarea.form-input {
 }
 
 /* ===== Animations ===== */
+/* Reveal Animation Base States */
+.bento-card,
+.section-head,
+.experience-item,
+.skill-chip,
+.contact-grid {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    will-change: transform, opacity;
+}
+
 @keyframes fadeUp {
     from {
         opacity: 0;

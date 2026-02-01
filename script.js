@@ -22,11 +22,9 @@ const animatedElements = document.querySelectorAll(
     '.bento-card, .section-head, .experience-item, .skill-chip, .contact-grid'
 );
 
-// Apply initial styles and observe
+// Apply staggered delay to elements and observe
 animatedElements.forEach((el, index) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = `all 0.8s cubic-bezier(0.19, 1, 0.22, 1) ${index * 0.05}s`; // Staggered delay
+    el.style.transitionDelay = `${index * 0.05}s`;
     observer.observe(el);
 });
 
