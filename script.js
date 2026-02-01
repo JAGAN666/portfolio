@@ -80,28 +80,44 @@ const heroName = document.querySelector('.hero-eyebrow');
 const heroMainTitle = document.querySelector('.hero-title');
 
 if (heroName && heroMainTitle) {
+    const heroSection = document.querySelector('.hero');
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
-        const maxScroll = 400; // Pixel range for the effect
+        const maxScroll = 500; // Pixel range for the main effect
         const progress = Math.min(scrollY / maxScroll, 1); // 0 to 1
 
+        // 1. Zoom/Scale Effects
         // Name: Starts Big (1.5), Ends Normal (1.0)
-        // We use Math.max to stop it from going below 1.0
         const nameScale = 1.5 - (0.5 * progress);
-
         // Title: Starts Small (0.9), Ends Big (1.1)
         const titleScale = 0.9 + (0.2 * progress);
 
-        // Apply transforms
-        // Note: We use requestAnimationFrame for smoother performance in complex apps, 
-        // but simple style updates here are usually fine.
+        // Immerse Hero Container: Shrink slightly and fade as we scroll away
+        if (heroSection) {
+            const heroOpacity = 1 - (progress * 0.8);
+            const heroScale = 1 - (progress * 0.05);
+            heroSection.style.opacity = heroOpacity;
+            heroSection.style.transform = `scale(${heroScale})`;
+        }
+
+        // Apply transforms to text
         requestAnimationFrame(() => {
             heroName.style.transform = `scale(${nameScale})`;
             heroMainTitle.style.transform = `scale(${titleScale})`;
-
-            // Optional: Fade out name slightly on scroll to focus on title?
-            // heroName.style.opacity = 1 - (0.3 * progress); 
+            heroName.style.opacity = 1 - progress; // Fade name faster for focus
         });
+
+        // 2. Dynamic Background Color Shift
+        // Transition to deep navy as we reach the "Work" section
+        const workSection = document.getElementById('work');
+        if (workSection) {
+            const workTop = workSection.offsetTop - 400;
+            if (scrollY > workTop) {
+                document.body.style.backgroundColor = '#0a0a14'; // Deep Midnight Navy
+            } else {
+                document.body.style.backgroundColor = '#000000'; // Pure Black
+            }
+        }
     });
 
     // Set initial state immediately

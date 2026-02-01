@@ -93,6 +93,9 @@ body {
     letter-spacing: -0.022em;
     /* Apple-style tracking */
     overflow-x: hidden;
+    perspective: 1000px;
+    /* Enable 3D transitions */
+    transition: background-color 1s ease;
 }
 
 a {
@@ -400,11 +403,36 @@ img {
     flex-direction: column;
 }
 
+.bento-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.bento-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent);
+    transform: skewX(-20deg);
+    transition: 0.75s;
+    z-index: 5;
+}
+
+.bento-card:hover::after {
+    left: 150%;
+}
+
 .bento-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+    transform: scale(1.02) translateY(-5px);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
     z-index: 10;
-    border-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.25);
 }
 
 /* Card Sizes */
@@ -687,10 +715,8 @@ textarea.form-input {
 .skill-chip,
 .contact-grid {
     opacity: 0;
-    transform: translateY(15px);
-    /* Reduced from 30px */
-    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-    /* Faster duration */
+    transform: translateY(30px) scale(0.98);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, opacity;
 }
 
