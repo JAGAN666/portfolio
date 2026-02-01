@@ -213,7 +213,8 @@ img {
     font-weight: 700;
     margin-bottom: var(--space-md);
     opacity: 0;
-    animation: fadeUp 1s var(--ease-out-expo) forwards;
+    animation: fadeUp 0.6s var(--ease-out-expo) forwards;
+    /* Faster Name entrance */
     letter-spacing: -0.02em;
 }
 
@@ -230,8 +231,8 @@ img {
     -webkit-text-fill-color: transparent;
     margin-bottom: var(--space-md);
     opacity: 0;
-    animation: fadeUp 0.8s var(--ease-out-expo) 0.4s forwards;
-    /* Snappier delay */
+    animation: fadeUp 0.6s var(--ease-out-expo) 0.2s forwards;
+    /* 0.2s delay instead of 0.4s */
     will-change: transform, opacity;
 }
 
@@ -251,7 +252,7 @@ img {
     display: flex;
     gap: var(--space-md);
     opacity: 0;
-    animation: fadeUp 0.8s var(--ease-out-expo) 0.6s forwards;
+    animation: fadeUp 0.6s var(--ease-out-expo) 0.4s forwards;
     margin-bottom: var(--space-xl);
     will-change: transform, opacity;
 }
@@ -681,15 +682,17 @@ textarea.form-input {
 .skill-chip,
 .contact-grid {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    transform: translateY(15px);
+    /* Reduced from 30px */
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    /* Faster duration */
     will-change: transform, opacity;
 }
 
 @keyframes fadeUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(15px);
     }
 
     to {

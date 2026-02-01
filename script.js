@@ -4,7 +4,7 @@
 const observerOptions = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.15 // Trigger when 15% visible
+    threshold: 0.05 // Trigger almost immediately (5% visible)
 };
 
 const observer = new IntersectionObserver((entries, observer) => {
@@ -22,9 +22,11 @@ const animatedElements = document.querySelectorAll(
     '.bento-card, .section-head, .experience-item, .skill-chip, .contact-grid'
 );
 
-// Apply staggered delay to elements and observe
+// Apply snappier staggered delay to elements and observe
 animatedElements.forEach((el, index) => {
-    el.style.transitionDelay = `${index * 0.05}s`;
+    // Cap cumulative delay at 200ms and use a faster multiplier
+    const delay = Math.min(index * 0.02, 0.2);
+    el.style.transitionDelay = `${delay}s`;
     observer.observe(el);
 });
 
