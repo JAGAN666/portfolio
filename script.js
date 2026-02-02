@@ -1,28 +1,5 @@
 // ===== Apple-Style Interaction Script =====
 
-// 0. Theme Toggle Logic (Persistence & UI)
-const themeToggle = document.getElementById('theme-toggle');
-const htmlElement = document.documentElement;
-
-// Check for saved theme preference or system preference
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    htmlElement.classList.toggle('light', savedTheme === 'light');
-} else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-    htmlElement.classList.add('light');
-}
-
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        const isLight = htmlElement.classList.toggle('light');
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
-
-        // Trigger subtle haptic-like scaling on toggle
-        themeToggle.style.transform = 'scale(0.9)';
-        setTimeout(() => themeToggle.style.transform = 'scale(1)', 100);
-    });
-}
-
 // 1. Intersection Observer for Scroll Reveals
 const observerOptions = {
     root: null,
@@ -132,17 +109,14 @@ if (heroName && heroMainTitle) {
         });
 
         // 2. Dynamic Background Color Shift
+        // Transition to deep navy as we reach the "Work" section
         const workSection = document.getElementById('work');
         if (workSection) {
             const workTop = workSection.offsetTop - window.innerHeight / 2;
-            const isLight = htmlElement.classList.contains('light');
-
             if (scrollY > workTop) {
-                // Work Section Backgrounds
-                document.body.style.backgroundColor = isLight ? '#f5f5f7' : '#020617';
+                document.body.style.backgroundColor = '#020617'; // Slate 950 (Deep Navy)
             } else {
-                // Hero Section Backgrounds
-                document.body.style.backgroundColor = isLight ? '#ffffff' : '#000000';
+                document.body.style.backgroundColor = '#000000'; // Pure Black
             }
         }
     });
