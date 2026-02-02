@@ -1,27 +1,15 @@
-/* ===== Cinematic Dark Theme (Apple Style) ===== */
 :root {
     /* Colors - Deep Space Black & Vibrance */
     --bg-primary: #000000;
-    /* Pure Black - iPhone Pro Style */
     --bg-secondary: #161617;
-    /* Apple Dark Grey */
     --bg-tertiary: #1c1c1e;
-    /* Slightly lighter for cards */
     --bg-card: rgba(28, 28, 30, 0.6);
-    /* Translucent Card */
-
     --text-primary: #f5f5f7;
-    /* Off-white (Apple Text) */
     --text-secondary: #86868b;
-    /* Apple Grey Text */
     --text-muted: #6e6e73;
-
     --accent-primary: #2997ff;
-    /* Apple Blue */
     --accent-secondary: #0071e3;
-    /* Deep Blue hover */
     --accent-gradient: linear-gradient(135deg, #2997ff 0%, #0071e3 100%);
-
     --glass-bg: rgba(28, 28, 30, 0.65);
     --glass-border: rgba(255, 255, 255, 0.1);
     --glass-highlight: rgba(255, 255, 255, 0.05);
@@ -31,12 +19,10 @@
     --font-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
 
     --type-display: 5rem;
-    /* Massive Hero Type */
     --type-h1: 3.5rem;
     --type-h2: 2.5rem;
     --type-h3: 1.5rem;
     --type-body: 1.0625rem;
-    /* 17px Body (Apple Standard) */
     --type-small: 0.875rem;
 
     /* Spacing */
@@ -46,7 +32,6 @@
     --space-lg: 2.5rem;
     --space-xl: 4rem;
     --space-2xl: 8rem;
-    /* Dramatic spacing */
 
     /* Animation Physics */
     --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
@@ -57,14 +42,88 @@
     --radius-sm: 0.75rem;
     --radius-md: 1.25rem;
     --radius-lg: 1.875rem;
-    /* 30px - Bento Grid Standard */
     --radius-full: 9999px;
 
     /* Layout */
     --container-width: 1080px;
-    /* Tighter container for reading */
     --nav-height: 48px;
-    /* Slim Nav */
+
+    /* Theme Transitions */
+    --theme-transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== Light Mode variables ===== */
+html.light {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f7;
+    --bg-tertiary: #fbfbfd;
+    --bg-card: rgba(255, 255, 255, 0.8);
+
+    --text-primary: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --text-muted: #86868b;
+
+    --accent-primary: #0066cc;
+    --accent-secondary: #0077ed;
+
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --glass-highlight: rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Theme Toggle Style ===== */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.theme-toggle:hover {
+    background: var(--hover-color, rgba(255, 255, 255, 0.1));
+    color: var(--text-primary);
+}
+
+html.light .theme-toggle:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+.sun-icon {
+    display: none;
+}
+
+.moon-icon {
+    display: block;
+}
+
+html.light .sun-icon {
+    display: block;
+}
+
+html.light .moon-icon {
+    display: none;
 }
 
 /* ===== Reset & Base ===== */
@@ -75,7 +134,27 @@
     padding: 0;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-    /* Critical for dark mode text */
+    /* transition: var(--theme-transition); Apply globally for smooth theme switching */
+}
+
+/* Apply transition only to theme-affected properties to avoid jitter */
+body,
+.navbar,
+.nav-container,
+.bento-card,
+.glass,
+.skill-item,
+.contact-grid,
+.form-input,
+.footer,
+.section-head,
+.card-title,
+.card-desc,
+.exp-title,
+.exp-list li,
+.hero-title,
+.hero-desc {
+    transition: var(--theme-transition), transform 0.4s var(--ease-out-expo);
 }
 
 html {
