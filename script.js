@@ -10,6 +10,7 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
             observer.unobserve(entry.target); // Only animate once
@@ -111,9 +112,9 @@ if (heroName && heroMainTitle) {
         // Transition to deep navy as we reach the "Work" section
         const workSection = document.getElementById('work');
         if (workSection) {
-            const workTop = workSection.offsetTop - 400;
+            const workTop = workSection.offsetTop - window.innerHeight / 2;
             if (scrollY > workTop) {
-                document.body.style.backgroundColor = '#0a0a14'; // Deep Midnight Navy
+                document.body.style.backgroundColor = '#020617'; // Slate 950 (Deep Navy)
             } else {
                 document.body.style.backgroundColor = '#000000'; // Pure Black
             }

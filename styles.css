@@ -373,13 +373,23 @@ img {
 .section-title-wrap {
     margin-bottom: var(--space-xl);
     text-align: left;
+    perspective: 1000px;
 }
 
 .section-head {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 700;
     color: #fff;
     letter-spacing: -0.02em;
+    transform: rotateX(20deg) translateY(30px);
+    opacity: 0;
+    transition: all 1s var(--ease-out-expo);
+    backface-visibility: hidden;
+}
+
+.section-head.visible {
+    transform: rotateX(0) translateY(0);
+    opacity: 1;
 }
 
 /* Bento Grid System */
@@ -398,14 +408,10 @@ img {
     overflow: hidden;
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: transform 0.4s var(--ease-spring), box-shadow 0.4s ease;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease, border-color 0.4s ease;
     display: flex;
     flex-direction: column;
-}
-
-.bento-card {
-    position: relative;
-    overflow: hidden;
+    will-change: transform, box-shadow;
 }
 
 .bento-card::after {
@@ -413,15 +419,16 @@ img {
     position: absolute;
     top: 0;
     left: -150%;
-    width: 100%;
+    width: 150%;
     height: 100%;
     background: linear-gradient(90deg,
             transparent,
-            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.08),
             transparent);
     transform: skewX(-20deg);
-    transition: 0.75s;
+    transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 5;
+    pointer-events: none;
 }
 
 .bento-card:hover::after {
@@ -430,9 +437,9 @@ img {
 
 .bento-card:hover {
     transform: scale(1.02) translateY(-5px);
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.7);
+    border-color: rgba(255, 255, 255, 0.2);
     z-index: 10;
-    border-color: rgba(255, 255, 255, 0.25);
 }
 
 /* Card Sizes */

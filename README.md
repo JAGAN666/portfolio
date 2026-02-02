@@ -15,11 +15,28 @@ This portfolio is engineered for a "Very, Very Fast" user experience:
 
 ## 🛠️ Technical Stack
 
-- **Core:** HTML5, Vanilla CSS3 (Custom Design System).
+- **Core:** Semantic HTML5, Vanilla CSS3 (Custom Design System).
 - **Interactions:** Vanilla JavaScript (Intersection Observer, Scroll-driven transforms).
-- **Forms:** Netlify Forms with AJAX submission handler.
+- **Forms:** Netlify Forms with a specialized AJAX submission handler for zero-refresh UX.
+- **Visuals:** Apple-inspired "Product Reveal" animations, GPU-accelerated 3D transforms, and glassmorphism.
 - **Deployment:** Automated CI/CD via GitHub and Netlify.
-- **Performance:** `sips` optimized assets, SF Pro typography.
+
+## 🚀 Local Development
+
+To run this project locally, you just need a simple HTTP server (to ensure Netlify form simulation and relative paths work correctly):
+
+1. **Option A (VS Code):** Install "Live Server" extension and click "Go Live".
+2. **Option B (Python):** Run `python -m http.server 8000` in the directory.
+3. **Option C (Node):** Run `npx serve .`
+
+## 🌐 Netlify Deployment
+
+This portfolio is optimized for Netlify:
+- **Netlify Forms:** Automatically detected. No backend required.
+- **Build Settings:** 
+  - Build Command: `npm run build` (or leave empty as it's static).
+  - Publish Directory: `.` (root).
+- **Configuration:** Handled via the included `netlify.toml` file.
 
 ## 🧪 Selected Work
 
