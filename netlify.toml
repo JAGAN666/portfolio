@@ -1,7 +1,10 @@
 [build]
-  command = "echo 'Building static site...'"
-  publish = "."
+  command = "npm install --legacy-peer-deps && npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [build.environment]
-  NETLIFY_NEXT_PLUGIN_SKIP = "true"
-  NEXT_USE_NETLIFY_EDGE = "false"
+  NEXT_PUBLIC_GA_ID = "G-WFLWF3S7VN"
+  
