@@ -2,7 +2,7 @@
 
 A high-performance, cinematic portfolio showcasing expertise in Engineering Data & AI. Built with a focus on extreme speed, fluid animations, and a premium "Apple-style" design language.
 
-🚀 **Live Demo:** [portfolio-jagan.netlify.app](https://portfolio-jagan.netlify.app)
+🚀 **Live Demo:** jagannathn.com
 
 ## ⚡ Performance Excellence
 
