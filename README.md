@@ -2,7 +2,7 @@
 
 A high-performance, cinematic portfolio showcasing expertise in Engineering Data & AI. Built with a focus on extreme speed, fluid animations, and a premium "Apple-style" design language.
 
-🚀 **Live Demo:** jagannathn.com
+🚀 **Live Demo:** [jagannathn.com](https://jagannathn.com/)
 
 ## ⚡ Performance Excellence
 
