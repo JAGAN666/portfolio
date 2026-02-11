@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:static": "mkdir -p dist && cp index.html styles.css script.js dist/ && cp -r images dist/",
     "start": "next start",
     "lint": "next lint"
   },
